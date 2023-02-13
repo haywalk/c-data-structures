@@ -14,15 +14,14 @@ typedef struct stack { int *stack; int size; } Stack;
 void push(Stack *stack, int value);
 int pop(Stack *stack);
 void printstack(Stack *stack);
+Stack * createstack();
 
 /*
  * A short demo.
  */
 int main()
 {
-	Stack *stack = malloc(sizeof(stack));
-	stack->stack = malloc(sizeof(int));
-	stack->size = 0;
+	Stack *stack = createstack();
 
 	push(stack, 1);
 	push(stack, 2);
@@ -84,4 +83,12 @@ void printstack(Stack *stack)
 	}
 
 	printf("]\n");
+}
+
+Stack * createstack()
+{
+	Stack *stack = malloc(sizeof(Stack));
+	stack->stack = malloc(sizeof(int));
+	stack->size = 0;
+	return stack;
 }
