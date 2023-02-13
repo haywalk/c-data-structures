@@ -1,2 +1,3 @@
-# c-data-structures
-Data structures in C.
+# Data Structures in C
+
+Some data structures implemented in C89.
