@@ -21,20 +21,20 @@ Stack * createstack();
  */
 int main()
 {
+	/* create a stack */
 	Stack *stack = createstack();
 
+	/* push some numbers to the stack */
 	push(stack, 1);
 	push(stack, 2);
 	push(stack, 3);
 
-	printstack(stack);
-	printf("Removed %d\n", pop(stack));
-	printstack(stack);
-	printf("Removed %d\n", pop(stack));
-	printstack(stack);
-	printf("Removed %d\n", pop(stack));
-	printstack(stack);
-	printf("Removed %d\n", pop(stack));
+	/* pop them all (and try popping from an empty stack) */
+	int i = 0;
+	for(i = 0; i < 4; i++) {
+		printstack(stack);
+		printf("Removed %d\n", pop(stack));
+	}
 
 	return 0;
 }
