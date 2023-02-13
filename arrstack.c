@@ -45,7 +45,7 @@ int main()
 void push(Stack *stack, int value)
 {
 	/* Allocate more memory if necessary */
-	if(stack->size == sizeof(*stack) / sizeof(int))
+	if(stack->size >= sizeof(stack->stack) / sizeof(int))
 		stack->stack = realloc(stack->stack, 2 * stack->size * sizeof(int));
 
 	/* Add new value and increase size */
@@ -61,6 +61,10 @@ int pop(Stack *stack)
 	/* Return garbage value if stack is empty */
 	if(stack->size <= 0)
 		return INT_MIN;
+
+	/* if less than half full, allocate less memory */
+	if(stack->size < (sizeof(stack->stack) / sizeof(int)) / 2)
+		stack->stack = realloc(stack->stack, (stack->size / 2) * sizeof(int));
 
 	/* Decrease size and return removed value */
 	stack->size -= 1;
